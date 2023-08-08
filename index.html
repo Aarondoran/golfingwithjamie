@@ -145,36 +145,54 @@
         .menuItems .items:last-child { border: none;}
         .menuItems .items a {text-decoration: none; color: white;}
     </style>
-    <script>
-        // Check if JavaScript is enabled
-        document.addEventListener("DOMContentLoaded", function() {
-            var overlay = document.querySelector("#customContextMenu");
-            overlay.style.display = "none";
-        });
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var overlay = document.querySelector("#customContextMenu");
+        overlay.style.display = "none";
+    });
 
-        // hiding the menu on click to the document
-        function hideCustomContextMenu() {
-            document.getElementById('customContextMenu').style.display = "none";
-        }
+    // hiding the menu on click to the document
+    function hideCustomContextMenu() {
+        document.getElementById('customContextMenu').style.display = "none";
+    }
 
-        // toggling the menu on right click to the page
-        function showCustomContextMenu(event) {
-            event.preventDefault();
-            var myContextMenu = document.getElementById('customContextMenu');
-            if (myContextMenu.style.display == "block") {
-                myContextMenu.style.display = "none";
-            }
-            else {
-                myContextMenu.style.display = "block";
-                myContextMenu.style.left = event.pageX + "px";
-                myContextMenu.style.top = event.pageY + "px";
-            }
+    // toggling the menu on right click to the specific elements
+    function showCustomContextMenu(event, elementId) {
+        event.preventDefault();
+        var myContextMenu = document.getElementById('customContextMenu');
+        if (myContextMenu.style.display == "block") {
+            myContextMenu.style.display = "none";
+        } else {
+            myContextMenu.style.display = "block";
+            myContextMenu.style.left = event.pageX + "px";
+            myContextMenu.style.top = event.pageY + "px";
+
+            // Update the context menu items based on the clicked element
+            myContextMenu.innerHTML = `
+                <ul class="menuItems">
+                    <li class="items"><a href="#">Sample Item 1</a></li>
+                    <li class="items"><a href="#">Sample Item 2</a></li>
+                    <li class="items"><a href="#">Sample Item 3</a></li>
+                </ul>
+            `;
         }
-        document.onclick = hideCustomContextMenu;
-        document.oncontextmenu = showCustomContextMenu;
-    </script>
+    }
+
+    // Apply the context menu to specific elements
+    document.getElementById('gallery').addEventListener('contextmenu', function(event) {
+        showCustomContextMenu(event, 'gallery');
+    });
+    
+    // Clicking anywhere on the document should hide the context menu
+    document.addEventListener('click', hideCustomContextMenu);
+</script>
+
 </head>
 <body>
+    <div id="customContextMenu">
+    <!-- Context menu items will be dynamically added here -->
+</div>
+
     <div class="sidebar">
         <div><iframe src="https://d1csarkz8obe9u.cloudfront.net/index.php/posterbuilder/view/0a0d214c3b27e526f45c7917633d02af/1" style="height: 100px; width:100px; border:none;"></iframe></div>
         <a href="#main">main</a>
@@ -226,4 +244,3 @@
     </div>
 </body>
 </html>
-
