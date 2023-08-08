@@ -1,22 +1,181 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JavaScript Disabled</title>
+    <title>golfing with jamie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
         }
 
-        .overlay {
+        .main {
+            text-align: center;
+            padding-top: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .sidebar {
+            margin: 0;
+            padding: 0;
+            width: 220px;
+            background-color: #333;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #fff;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        .sidebar a.active {
+            background-color: #04AA6D;
+            color: #fff;
+        }
+
+        .sidebar a:hover:not(.active) {
+            background-color: #555;
+        }
+
+        .content {
+            margin-left: 240px;
+            padding: 1px 16px;
+            height: 1000px;
+        }
+
+        h1 {
+            color: #555;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        h3 {
+            color: #04AA6D;
+        }
+
+        h4 {
+            color: #555;
+        }
+
+        p {
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .gallery-container {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative; /* Add this line */
+        }
+
+        .gallery-heading {
+            background-color: #04AA6D;
+            color: #fff;
+            padding: 8px 16px;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .gallery img {
+            width: 300px;
+            height: 350px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+        }
+
+        @media screen and (max-width: 700px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .sidebar a {
+                float: left;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .sidebar a {
+                text-align: center;
+                float: none;
+            }
+        }
+
+        #customContextMenu {
+            position: absolute;
+            background-color: #84abb5;
+            color: white;
+            height: auto;
+            width: 150px;
+            text-align: center;
             display: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Adjust this value */
+        }
+
+        .menuItems {
+            list-style: none;
+            font-size: 14px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menuItems .items {
+            padding: 10px;
+            border-bottom: 1px solid #e6d4b6;
+        }
+
+        .menuItems .items:last-child {
+            border: none;
+        }
+
+        .menuItems .items a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .menuItems .items a:hover {
+            background-color: #5e8c96;
+        }
+        .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             z-index: 1000;
         }
 
@@ -27,22 +186,14 @@
             text-align: center;
         }
     </style>
-    <script>
-        // Check if JavaScript is enabled
-        document.addEventListener("DOMContentLoaded", function() {
-            var overlay = document.querySelector(".overlay");
-            overlay.style.display = "none";
-        });
-    </script>
 </head>
-<body>
+<body class="no-js">
     <div class="overlay">
         <div class="overlay-message">
             <p>JavaScript is disabled.</p>
             <p>Please enable JavaScript to use this website.</p>
         </div>
     </div>
-
     <div id="customContextMenu" style="display: none;">
         <ul class="menuItems">
             <li class="items"><a href="#main">main</a></li>
@@ -101,9 +252,9 @@
             </div>
         </div>
     </div>
-
+    <!-- Additional JavaScript for the custom context menu -->
     <script>
-  function hideCustomContextMenu() {
+        function hideCustomContextMenu() {
             document.getElementById('customContextMenu').style.display = "none";
         }
 
@@ -122,7 +273,11 @@
         document.onclick = hideCustomContextMenu;
         document.oncontextmenu = showCustomContextMenu;
 
-        alert("JavaScript is working!"); // For example
+          // Check if JavaScript is enabled
+          document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.remove("no-js");
+        });
     </script>
 </body>
+
 </html>
