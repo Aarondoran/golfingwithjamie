@@ -148,38 +148,38 @@
     <script>
         // Check if JavaScript is enabled
         document.addEventListener("DOMContentLoaded", function() {
-       //     var overlay = document.querySelector("#customContextMenu");
-         //   overlay.style.display = "none";
+            var overlay = document.querySelector("#customContextMenu");
+            overlay.style.display = "none";
         });
 
         // hiding the menu on click to the document
-      //  function hideCustomContextMenu() {
-        //    document.getElementById('customContextMenu').style.display = "none";
-        //}
+        function hideCustomContextMenu() {
+            document.getElementById('customContextMenu').style.display = "none";
+        }
 
         // toggling the menu on right click to the page
-       // function showCustomContextMenu(event) {
-        //    event.preventDefault();
-          //  var myContextMenu = document.getElementById('customContextMenu');
-            //if (myContextMenu.style.display == "block") {
-              //  myContextMenu.style.display = "none";
-            //}
-            //else {
-              //  myContextMenu.style.display = "block";
-                //myContextMenu.style.left = event.pageX + "px";
-                //myContextMenu.style.top = event.pageY + "px";
-            //}
-        //}
-        //document.onclick = hideCustomContextMenu;
-        //document.oncontextmenu = showCustomContextMenu;
+        function showCustomContextMenu(event) {
+            event.preventDefault();
+            var myContextMenu = document.getElementById('customContextMenu');
+            if (myContextMenu.style.display == "block") {
+                myContextMenu.style.display = "none";
+            }
+            else {
+                myContextMenu.style.display = "block";
+                myContextMenu.style.left = event.pageX + "px";
+                myContextMenu.style.top = event.pageY + "px";
+            }
+        }
+        document.onclick = hideCustomContextMenu;
+        document.oncontextmenu = showCustomContextMenu;
     </script>
 </head>
 <body>
     <div class="sidebar">
         <div><iframe src="https://d1csarkz8obe9u.cloudfront.net/index.php/posterbuilder/view/0a0d214c3b27e526f45c7917633d02af/1" style="height: 100px; width:100px; border:none;"></iframe></div>
         <a href="#main">main</a>
-        <a href="#socials">Socials</a>
         <a href="#gallery">Gallery</a>
+        <a href="#socials">Socials</a>
     </div>
     <div class="content">
         <div class="main" id="main">
