@@ -131,48 +131,26 @@ c
             }
         }
         #customContextMenu {
-            position: absolute;
-            background-color: #84abb5;
-            color: white;
-            height: auto;
-            width: 150px;
-            text-align: center;
-            display: none;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
-        .menuItems {
-            list-style: none;
-            font-size: 12px;
-            padding: 0;
-            margin: 0;
-        }
-        .menuItems .items { padding: 5px; border-bottom: 1px solid #e6d4b6;}
-        .menuItems .items:last-child { border: none;}
-        .menuItems .items a {text-decoration: none; color: white;}
-
-        #customContextMenu {
-            position: absolute;
-            background-color: #84abb5;
-            color: white;
-            height: auto;
-            width: 150px;
-            text-align: center;
-            display: none;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
-        .menuItems {
-            list-style: none;
-            font-size: 12px;
-            padding: 0;
-            margin: 0;
-        }
-        .menuItems .items { padding: 5px; border-bottom: 1px solid #e6d4b6;}
-        .menuItems .items:last-child { border: none;}
-        .menuItems .items a {text-decoration: none; color: white;}
+    position: absolute;
+    background-color: #84abb5;
+    color: white;
+    height: auto;
+    width: 150px;
+    text-align: center;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+.menuItems {
+    list-style: none;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+}
+.menuItems .items { padding: 5px; border-bottom: 1px solid #e6d4b6;}
+.menuItems .items:last-child { border: none;}
+.menuItems .items a {text-decoration: none; color: white;}
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -214,6 +192,48 @@ c
         
         // Clicking anywhere on the document should hide the context menu
         document.addEventListener('click', hideCustomContextMenu);
+
+        document.addEventListener("DOMContentLoaded", function() {
+    var overlay = document.querySelector("#customContextMenu");
+    overlay.style.display = "none";
+});
+
+// hiding the menu on click to the document
+function hideCustomContextMenu() {
+    document.getElementById('customContextMenu').style.display = "none";
+}
+
+// toggling the menu on right click to the specific elements
+function showCustomContextMenu(event, elementId) {
+    event.preventDefault();
+    var myContextMenu = document.getElementById('customContextMenu');
+    if (myContextMenu.style.display == "block") {
+        myContextMenu.style.display = "none";
+    } else {
+        myContextMenu.style.display = "block";
+        myContextMenu.style.left = event.clientX + "px";
+        myContextMenu.style.top = event.clientY + "px";
+
+        // Update the context menu items based on the clicked element
+        myContextMenu.innerHTML = `
+            <ul class="menuItems">
+                <li class="items"><a href="#">Sample Item 1</a></li>
+                <li class="items"><a href="#">Sample Item 2</a></li>
+                <li class="items"><a href="#">Sample Item 3</a></li>
+            </ul>
+        `;
+    }
+}
+
+// Apply the context menu to specific elements
+document.addEventListener('contextmenu', function(event) {
+    showCustomContextMenu(event, 'gallery'); // Use 'gallery' or any other relevant element ID
+});
+
+// Clicking anywhere on the document should hide the context menu
+document.addEventListener('click', hideCustomContextMenu);
+
+
     </script>
 </head>
 <body>
