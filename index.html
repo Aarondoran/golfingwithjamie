@@ -123,9 +123,60 @@
                 float: none;
             }
         }
+        #customContextMenu {
+    position: absolute;
+    background-color: #84abb5;
+    color: white;
+    min-height: 150px;
+    width: 150px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px;
+}
+
+.menuItems {
+    list-style: none;
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+}
+
+.menuItems .items {
+    padding: 10px;
+    border-bottom: 1px solid #e6d4b6;
+    transition: background-color 0.3s;
+}
+
+.menuItems .items:last-child {
+    border: none;
+}
+
+.menuItems .items a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+.menuItems .items a:hover {
+    color: #ffca28;
+}
+
+.menuItems .items:hover {
+    background-color: #506a7d;
+}
+
     </style>
 </head>
 <body>
+    <div id = "customContextMenu" style = "display: none;">
+        <ul class = "menuItems">
+        <li class = "items"><a href = "#"> Menu Item-1 </a></li>
+        <li class = "items"><a href = "#"> Menu Item-2 </a></li>
+        <li class = "items"><a href = "#"> Menu Item-3 </a></li>
+        </ul>
+        </div>
     <div class="sidebar">
         <div><iframe src="https://d1csarkz8obe9u.cloudfront.net/index.php/posterbuilder/view/0a0d214c3b27e526f45c7917633d02af/1" style="height: 100px; width:100px; border:none;"></iframe></div>
         <a href="#main">main</a>
@@ -174,4 +225,26 @@
         </div>
     </div>
 </body>
+<script>
+     // hiding the menu on click to the document
+     function hideCustomContextMenu() {
+         document.getElementById('customContextMenu').style.display = "none";
+      }
+      
+      // toggling the menu on right click to the page
+      function showCustomContextMenu(event) {
+         event.preventDefault();
+         var myContextMenu = document.getElementById('customContextMenu');
+         if (myContextMenu.style.display == "block") {
+            myContextMenu.style.display = "none";
+         }
+         else {
+            myContextMenu.style.display = "block";
+            myContextMenu.style.left = event.pageX + "px";
+            myContextMenu.style.top = event.pageY + "px";
+         }
+      }
+      document.onclick = hideCustomContextMenu;
+      document.oncontextmenu = showCustomContextMenu;
+</script>
 </html>
