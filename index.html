@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,12 +35,27 @@
         .menuItems .items a {text-decoration: none; color: white;}
     </style>
     <script>
-        // Your existing JavaScript code here
-
         // Check if JavaScript is enabled
         document.addEventListener("DOMContentLoaded", function() {
             var overlay = document.querySelector("#customOverlay");
             overlay.style.display = "none";
+        });
+
+        // Custom right-click menu
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+            var customContextMenu = document.querySelector("#customContextMenu");
+            customContextMenu.style.top = e.clientY + "px";
+            customContextMenu.style.left = e.clientX + "px";
+            customContextMenu.style.display = "block";
+        });
+
+        // Hide custom right-click menu when clicking outside
+        document.addEventListener("click", function(e) {
+            var customContextMenu = document.querySelector("#customContextMenu");
+            if (!customContextMenu.contains(e.target)) {
+                customContextMenu.style.display = "none";
+            }
         });
 
         // ... (Your existing right-click menu JavaScript code) ...
@@ -50,55 +68,22 @@
     
     <div class="sidebar">
         <!-- Your existing sidebar content -->
-        <div><iframe src="https://d1csarkz8obe9u.cloudfront.net/index.php/posterbuilder/view/0a0d214c3b27e526f45c7917633d02af/1" style="height: 100px; width:100px; border:none;"></iframe></div>
-        <a href="#main">main</a>
-        <a href="#socials">Socials</a>
-        <a href="#gallery">Gallery</a>
     </div>
     
     <div class="content">
         <div class="main" id="main">
             <!-- Your existing main content -->
-            <h1>Golfing with Jamie</h1>
-            <h3>What I Do</h3>
-            <p>Welcome to Jamie's Golf Page! My name is Jamie,
-                 and I'm a passionate young golfer who wants to share my love for this amazing sport with all of you.
-                   Golf has been a part of my life for as long as I can remember. From the first time I held a club in my hands,
-                    I knew that this was something special. Whether it's the thrill of sinking a long putt or 
-                    the pure joy of seeing my ball soar through the air, golf never fails to captivate me.
-                     Through this page, I aim to provide valuable insights, tips, and help from my own experience.
-                      So join me as we explore the world of golf together and strive for that perfect swing!</p>
-            <h4>I can help any golf player in need with their swings and more</h4>
-
-            <div class="gallery-container">
-                <div class="gallery-heading">Gallery</div>
-                <div class="gallery" id="gallery">
-                    <div class="gallery" id="gallery">
-                        <img src="images/golfpic1.jpg" width="300px" height="350px" alt="golf picture">
-                        <img src="images/golfpic2.jpg" width="300px" height="350px" alt="golf picture">
-                        <img src="images/golfpic5.jpg" width="300px" height="350px" alt="golf picture">
-                        <img src="images/golfpic3.jpg" width="300px" height="350px" alt="golf picture">
-                        <img src="images/golfpic4.jpg" width="300px" height="350px" alt="golf picture">
-                    </div>
-                </div>
-            </div>
-
-            <div class="socials" id="socials">
-                <h2>Socials</h2>
-                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@golfwithjamie" 
-                data-unique-id="golfwithjamie" data-embed-type="creator" 
-                style="max-width: 780px; min-width: 288px;" >
-                 <section> 
-                    <a target="_blank" href="https://www.tiktok.com/@golfwithjamie?refer=creator_embed">@golfwithjamie</a>
-                 </section>
-                 </blockquote> <script async src="https://www.tiktok.com/embed.js">
-
-                 </script>
-
-                <p>Snapchat embed here.</p>
-                <p>Instagram embed here.</p>
-            </div>
         </div>
+    </div>
+    
+    <!-- Custom context menu -->
+    <div id="customContextMenu">
+        <ul class="menuItems">
+            <li class="items"><a href="#">Menu Item 1</a></li>
+            <li class="items"><a href="#">Menu Item 2</a></li>
+            <li class="items"><a href="#">Menu Item 3</a></li>
+            <!-- Add more menu items as needed -->
+        </ul>
     </div>
 </body>
 </html>
