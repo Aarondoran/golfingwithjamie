@@ -167,13 +167,39 @@
     background-color: #506a7d;
 }
 
+.blocker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.blocker>.content {
+  background: #fff;
+  width: fit-content;
+  margin: 0 auto;
+  max-width: 300px;
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
     </style>
-</head>
-<body>
-    <noscript>
-        <h1>javascript off.</h1>
-        <p>please turn javascript on in your browser to access this website.</p>
-    </noscript>
+    </head>
+    <body>
+        <noscript>
+            <div class="blocker">
+              <div class="content">
+                turn javascript on to use this site
+              </div>
+            </div>
+          </noscript>
     <div id = "customContextMenu" style = "display: none;">
         <ul class = "menuItems">
         <li class = "items"><a href = "#main"> Main </a></li>
