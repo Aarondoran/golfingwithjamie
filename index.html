@@ -186,10 +186,35 @@
   padding: 1rem;
   text-align: center;
 }
+
 .snapbutton {
-    height: 35px;
-    background-color: white;
-}
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        padding: 0 15px;
+        background-color: #04AA6D;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .snapbutton i {
+        margin-left: 10px;
+        font-size: 20px;
+    }
+
+    .snapbutton:hover {
+        background-color: #04815d;
+    }
+
+    .snapbutton:hover i {
+        color: #FFFC00;
+    }
     </style>
     </head>
     <body>
@@ -229,7 +254,9 @@
                      Through this page, I aim to provide valuable insights, tips, and help from my own experience.
                       So join me as we explore the world of golf together and strive for that perfect swing!</p>
                       <p>if you have any problems</br> or just for tips and tricks check out my social media or contact me at
-                         <button class="snapbutton" href="https://www.snapchat.com/add/golfwithjamie"> Snapchat <i class="fa fa-snapchat" style="font-size:36px;color:#FFFC00"></i></button>
+                        <button class="snapbutton" onclick="window.location.href='https://www.snapchat.com/add/golfwithjamie'">
+                            Snapchat <i class="fa fa-snapchat"></i>
+                        </button>
             <h4>I can help any golf player in need with their swings and more</h4>
 
             <div class="gallery-container">
